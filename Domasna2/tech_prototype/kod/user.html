@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background-color: #890800;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        #image-container {
+            position: absolute;
+            top: 20px;
+            left: 50px;
+        }
+
+        .input-container {
+            position: absolute;
+            top: 250px;
+            left: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+
+        .input-group {
+            display: flex;
+            flex-direction: column; /* Set to column direction */
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .input-field {
+            background-color: white;
+            width: 250px;
+            height: 50px;
+            color: #890800;
+            border: 2px solid #890800;
+            border-radius: 25px;
+            margin-bottom: 5px;
+            padding: 5px;
+        }
+
+        h3 {
+            font-family: 'Bukhari Script', cursive;
+            font-weight: bold;
+            font-style: italic;
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        .edit-button {
+            background-color: #890800;
+            color: white;
+            font-family: 'Bukhari Script', cursive;
+            font-weight: bold;
+            font-style: italic;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-top: -50px;
+            margin-left: 270px;
+            width: 70px;
+            height: 30px;
+            text-decoration: underline;
+        }
+        #rating-list{
+            position: fixed;
+            top: 60px;
+            right: 230px;
+            color: white;
+        }
+        #rating-list > ul > li{
+            margin-top: 20px;
+            margin-left: -30px;
+            font-family: 'Bukhari Script', cursive;
+            font-weight: bold;
+        }
+        #points-container{
+            position: fixed;
+            color: white;
+            font-size: 50px;
+            position: fixed;
+            top: 380px;
+            left: 850px;
+        }
+        #points-container > h3{
+            margin-left: -60px;
+        }
+        h1{
+            font-family: 'Bukhari Script', cursive;
+            font-weight: bold;
+            position: absolute;
+            top: 140px;
+            left: 37%;
+            transform: translateX(-50%);
+            color: white;
+            z-index: 2;
+            font-style: italic;
+        }
+        #image-container1{
+            position: fixed;
+            bottom: 20px;
+            right: 0px;
+        }
+        #image-container2{
+            position: fixed;
+            bottom: 20px;
+            left: 0px;
+        }
+        #image-container6{
+            position: fixed;
+            top: 10px;
+            right: 130px;
+
+        }
+        #image-container3{
+            position: fixed;
+            top: 250px;
+            left: 650px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="image-container">
+    <img src="./photos/welcome.jpg" height="200" width="500" alt="Welcome Image"/>
+</div>
+
+<div id="image-container1">
+
+    <img src="./photos/right.jpg" height="208" width="150"/></div>
+<div id="image-container2">
+
+    <img src="./photos/left.jpg" height="208" width="150"/></div>
+<div id="image-container3">
+
+    <img src="./photos/arrow.jpg" height="203" width="292"/></div>
+
+<div id="image-container6">
+
+    <img src="./photos/raiting.jpg" height="300" width="300"/></div>
+<h1>Стефан Стефановски!</h1>
+
+<div class="input-container">
+    <div class="input-group">
+        <h3>Username:</h3>
+        <input type="text" class="input-field" placeholder="  your username">
+        <button class="edit-button">Edit</button>
+    </div>
+    <div class="input-group">
+        <h3>E-mail:</h3>
+        <input type="text" class="input-field" placeholder="  your email">
+        <button class="edit-button">Edit</button>
+    </div>
+    <div class="input-group">
+        <h3>Location:</h3>
+        <input type="text" class="input-field" placeholder="  your location">
+        <button class="edit-button">Edit</button>
+    </div>
+    <div id="rating-list">
+        <h3>ОЦЕНИ:</h3>
+        <ul>
+            <li>Стоби:10</li>
+            <li>Тиквеш:8</li>
+            <li>Сковин:4</li>
+        </ul>
+    </div>
+
+    <div id="points-container">
+        <h3>ПОЕНИ</h3>
+        <div id="circle" style="border: 2px dashed white; border-radius: 50%; width: 100px; height: 100px; display: flex; justify-content: center; align-items: center; background-color: #890800; margin-top: 5px;">
+            <span style="font-size: 50px;">10</span>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

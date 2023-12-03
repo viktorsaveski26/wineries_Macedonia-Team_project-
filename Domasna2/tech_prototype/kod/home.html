@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+
+  <script>
+    function performSearch() {
+      var searchQuery = document.getElementById("searchInput").value;
+      window.location.href = "map.html";
+    }
+  </script>
+  <style>
+
+    #searchInput{
+      color: black;
+    }
+
+    *
+    {
+      background-color: #890800;
+      color: white;
+    }
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #4f0505;
+    }
+
+    li {
+      float: left;
+      border-right:1px solid #bbb;
+
+    }
+
+    li:last-child {
+      border-left:1px solid #bbb;
+    }
+
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      background-color: #4f0505;
+    }
+
+    li a:hover:not(.active) {
+      background-color: #310303;
+    }
+
+    .active {
+      background-color: #f55858;
+    }
+
+    input
+    {
+      background-color: white;
+      height: 30px;
+      margin-left: 150px;
+      width: 250px;
+      margin-bottom: 20px;
+    }
+
+    #image-container1{
+      position: fixed;
+      bottom: 20px;
+      right: 0px;
+    }
+    #image-container2{
+      position: fixed;
+      bottom: 20px;
+      left: 0px;
+    }
+
+    .search-container1 {
+      position: fixed;
+      right: 300px;
+      top: 180px;
+      width: 300px;
+    }
+
+    .search-container2 {
+      position: fixed;
+      width: 300px;
+      right: 300px;
+      top: 250px;
+    }
+
+
+    .search-input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .search-icon1 {
+      background-color: white;
+      position: fixed;
+      right: 150px;
+      top:195px;
+      cursor: pointer;
+    }
+
+    .search-icon2 {
+      background-color: white;
+      position: fixed;
+      right: 150px;
+      top:265px;
+      cursor: pointer;
+    }
+
+    .image{
+      margin-top: 80px;
+      margin-left: 70px;
+    }
+
+
+    .noborder{
+      border-right: none;
+    }
+
+
+      </style>
+</head>
+<body>
+<ul>
+  <li><a class="active" href="home.html">Home</a></li>
+  <li><a href="#maps">Map</a></li>
+  <li><a id="loginLink" href="login.html" >Log in</a></li>
+  <li><a id="signlink" href="registration.html">Sign up</a></li>
+  <li class="noborder" style="float:right"><a href="#flasmac"><img  width="30px" src="./photos/macedonia.png"></a></li>
+  <li class="noborder" style="float:right"><a href="#flasmac"><img  width=30px" src="./photos/english.jpg"></a></li>
+  <li style="float:right"><a href="user.html"><img style="background-color: #4f0505"  height="15px" width="15px" src="./photos/user.png"></a></li>
+  <li style="float:right"><a href="#about">About</a></li>
+
+</ul>
+<div class="image">
+  <img width="500px" src="./photos/title.png">
+</div>
+
+
+<form id="search_form">
+<div class="search-container1">
+    <input type="text" id="searchInput" class="search-input" placeholder="Најди винарија...." >
+  <button type="button" onclick="performSearch()">
+    <div class="search-icon1">
+      &#128269;
+    </div>
+  </button>
+</div>
+</form>
+
+  <div class="search-container2">
+    <input type="text" class="search-input" placeholder="Најди вино...">
+    <div class="search-icon2">
+      &#128269;
+    </div>
+  </div>
+  <div id="image-container1">
+  <img src="./photos/right.jpg" height="208" width="150"/></div>
+  <div id="image-container2">
+    <img src="./photos/left.jpg" height="208" width="150"/></div>
+
+</body>

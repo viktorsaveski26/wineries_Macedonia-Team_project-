@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Map</title>
+</head>
+
+<script>
+    function navigateToAnotherPage() {
+        window.location.href = "tikves.html";
+    }
+</script>
+<style>
+    body{
+        background-image: url('./photos/map.jpg');
+        background-size: 1100px;
+        background-color: #890800;
+        background-position: center; 
+        background-repeat: no-repeat;
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    button{
+        cursor: pointer;
+    }
+
+    .map_btn{
+        position: fixed;
+        bottom: 130px;
+        left: 870px;
+        opacity: 0;
+    }
+
+    .invisible-button{
+        width: 50px;
+        height: 50px;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #4f0505;
+        position: fixed;
+        top: 0px;
+        width: 100%;
+    }
+
+    li {
+        float: left;
+        border-right:1px solid #bbb;
+
+    }
+
+    li:last-child {
+        border-left:1px solid #bbb;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        background-color: #4f0505;
+    }
+
+    li a:hover:not(.active) {
+        background-color: #310303;
+    }
+
+    .active {
+        background-color: #f55858;
+    }
+
+    .noborder{
+        border-right: none;
+    }
+
+
+</style>
+<body>
+<ul>
+    <li><a href="home.html">Home</a></li>
+    <li><a href="#maps"  class="active">Map</a></li>
+    <li><a id="loginLink" href="login.html">Log in</a></li>
+    <li><a id="signlink" href="registration.html">Sign up</a></li>
+    <li class="noborder" style="float:right"><a href="#flasmac"><img  width="30px" src="./photos/macedonia.png"></a></li>
+    <li class="noborder" style="float:right"><a href="#flasmac"><img  width=30px" src="./photos/english.jpg"></a></li>
+    <li style="float:right"><a href="user.html" style="background-color: #4f0505" ><img  height="15px" width="15px" src="./photos/user.png"></a></li>
+    <li style="float:right"><a href="#about">About</a></li>
+
+</ul>
+
+<div class="map_btn">
+    <button class="invisible-button" onclick="navigateToAnotherPage()"></button>
+</div>
+
+</div>
+</body>
+</html>
