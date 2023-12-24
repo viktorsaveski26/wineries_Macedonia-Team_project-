@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        #searchInput{
+            color: black;
+        }
+
+        *
+        {
+            background-color: #890800;
+            color: white;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #4f0505;
+        }
+
+        li {
+            float: left;
+            border-right:1px solid #bbb;
+
+        }
+
+        li:last-child {
+            border-left:1px solid #bbb;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            background-color: #4f0505;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #310303;
+        }
+
+        .active {
+            background-color: #f55858;
+        }
+
+        .noborder {
+            border-right: none;
+        }
+
+        body {
+            background-color: #890800;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .input-container {
+            position: absolute;
+            top: 250px;
+            left: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .input-field {
+            background-color: white;
+            width: 250px;
+            height: 50px;
+            color: #890800;
+            border: 2px solid #890800;
+            border-radius: 25px;
+            margin-bottom: 5px;
+            padding: 5px;
+        }
+
+        h3 {
+            font-family: 'Bukhari Script', cursive;
+            font-weight: bold;
+            font-style: italic;
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        .edit-button {
+            background-color: #890800;
+            color: white;
+            font-family: 'Bukhari Script', cursive;
+            font-weight: bold;
+            font-style: italic;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-top: -50px;
+            margin-left: 270px;
+            width: 70px;
+            height: 30px;
+            text-decoration: underline;
+        }
+        #rating-list > ul > li{
+            margin-top: 20px;
+            margin-left: -30px;
+            font-family: 'Bukhari Script', cursive;
+            font-weight: bold;
+        }
+        #points-container{
+            position: fixed;
+            color: white;
+            font-size: 50px;
+            position: fixed;
+            top: 380px;
+            left: 850px;
+        }
+        #points-container > h3{
+            margin-left: -60px;
+        }
+        h1{
+            font-family: 'Bukhari Script', cursive;
+            font-weight: bold;
+            position: absolute;
+            top: 140px;
+            left: 37%;
+            transform: translateX(-50%);
+            color: white;
+            z-index: 2;
+            font-style: italic;
+        }
+
+        input
+        {
+            color: black;
+            font-size: 15px;
+        }
+
+        .fond{
+            font-family: 'Bukhari Script', cursive;
+        }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .input-field {
+            background-color: #f8f8f8;
+            width: 250px;
+            height: 40px;
+            color: #333;
+            border: 2px solid #890800;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            padding: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .input-field:hover {
+            background-color: #e0e0e0;
+        }
+
+        .edit-button {
+            background-color: #890800;
+            color: white;
+            font-family: 'Bukhari Script', cursive;
+            font-weight: bold;
+            font-style: italic;
+            padding: 8px 15px;
+            cursor: pointer;
+            margin-top: -30px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .edit-button:hover {
+            background-color: #751c00;
+        }
+
+        input[type="submit"] {
+            background-color: #890800;
+            color: white;
+            font-family: 'Bukhari Script', cursive;
+            font-weight: bold;
+            font-style: italic;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #751c00;
+        }
+
+        #points-container {
+
+            position: fixed;
+            color: white;
+            font-size: 50px;
+            position: fixed;
+            top: 380px;
+            left: 850px;
+            text-align: center;
+        }
+
+        #circle {
+
+            border: 2px dashed white;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #890800;
+            margin-top: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        #circle:hover {
+            background-color: #751c00;
+        }
+
+        a.fond {
+
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        a.fond:hover {
+            color: #751c00; }
+
+    </style>
+</head>
+<body>
+<form method="get" action="/profil">
+    <ul>
+        <li><a th:href="@{/pocetna}">Home</a></li>
+        <li><a th:href="@{/map}">Map</a></li>
+        <li style="float:right" class="noborder"> <a th:href="@{/loginout}">Logout</a></li>
+        <li style="float:right"><a><img width="30px" src="/photos/macedonia.png" alt="Macedonia Flag"></a></li>
+        <li style="float:right"><a><img width="30px" src="/photos/english.jpg" alt="English Flag"></a></li>
+        <li style="float:right"> <a class="active" th:href="@{/profil}">Profile</a></li>
+        <li style="float:right"><a href="">About</a></li>
+    </ul>
+    <h1><span th:value="${session.user.getName()}" ></span><span  th:value="${session.user.getSurname()}"></span></h1>
+
+    <div class="input-container">
+        <div class="input-group">
+            <h3>Username:</h3>
+            <input type="text" class="input-field" th:value="${session.user.getName()}"/>
+            <button class="edit-button">Edit</button>
+        </div>
+        <div class="input-group">
+            <h3>E-mail:</h3>
+            <input type="text" class="input-field" name="email" th:value="${session.user.getEmail()}"/>
+            <button class="edit-button">Edit</button>
+        </div>
+        <div class="input-group">
+            <h3>Location:</h3>
+            <input type="text" class="input-field" th:value="${session.user.getLocation()}"/>
+            <button class="edit-button">Edit</button>
+        </div>
+        <div class="input-group">
+            <input type="hidden" class="input-field" name="id" th:value="${session.user.getId()}"/>
+        </div>
+        <div id="points-container">
+            <h3>ПОЕНИ</h3>
+            <div id="circle" style="border: 2px dashed white; border-radius: 50%; width: 100px; height: 100px; display: flex; justify-content: center; align-items: center; background-color: #890800; margin-top: 5px;">
+                <span style="font-size: 50px;" th:text="${session.user.getPoeni()}" ></span>
+            </div>
+            <a th:href="@{pocetna/addocena}" class="fond">Внеси оцена</a>
+        </div>
+    </div>
+    <input type="submit" value="Собери поени"/>
+</form>
+</body>
+</html>
