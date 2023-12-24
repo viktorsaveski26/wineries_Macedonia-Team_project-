@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map</title>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+
+        #search {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        #winerySelect {
+            width: 200px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #fff;
+            cursor: pointer;
+            outline: none;
+        }
+
+        #winerySelect:hover {
+            border-color: #555;
+        }
+
+        #winerySelect:focus {
+            border-color: #f55858;
+            box-shadow: 0 0 5px rgba(255, 85, 85, 0.7);
+        }
+    </style>
+</head>
+
+<body>
+<div id="search">
+    <label for="winerySelect">Избери винарија:</label>
+    <select id="winerySelect">
+        <option value="" disabled selected>Избери винарија</option>
+        <th:block th:each="vina : ${vinaList}">
+            <option th:value="${vina.name}" th:text="${vina.name}"></option>
+        </th:block>
+    </select>
+</div>
+<div id="map"></div>
+
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoidGFtYXJhMjEzMDIwIiwiYSI6ImNscTRmNWt1MDA1Z3YyanNnNW9xNjlvZ2IifQ.UVFZe9DCfGWGxzPGpeUq-A';
+    let map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [21.9357, 41.5965],
+        zoom: 15
+    });
+
+    map.on('load', function () {
+        map.addSource('markers', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
+        map.addLayer({
+            id: 'markers',
+            type: 'symbol',
+            source: 'markers',
+            layout: { 'icon-image': 'marker-15', 'icon-allow-overlap': true, 'icon-size' : 3.0 },
+            paint: {
+                'icon-color': '#e00000'
+            }
+        });
+    });
+
+    var winerySelect = document.getElementById('winerySelect');
+
+    winerySelect.addEventListener('change', function () {
+        var selectedWinery = winerySelect.value;
+
+        fetch('/api/vina/koordinati?ime=' + selectedWinery)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Vinery not found');
+                }
+                return response.json();
+            })
+            .then(data => {
+                var coordinates = [data.Y, data.X];
+
+                map.getSource('markers').setData({
+                    type: 'FeatureCollection',
+                    features: [{
+                        type: 'Feature',
+                        geometry: {
+                            type: 'Point',
+                            coordinates: coordinates
+                        }
+                    }]
+                });
+
+                map.on('click', 'markers', function (e) {
+                    window.location.href = '/' + selectedWinery + '.html';
+                });
+
+                map.flyTo({
+                    center: coordinates,
+                    zoom: 17,
+                    essential: true
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching vinery coordinates:', error);
+            });
+    });
+</script>
+
+</body>
+
+</html>
