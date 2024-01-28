@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function performSearch() {
+            var searchQuery = document.getElementById("searchInput").value;
+            window.location.href = "map.html";
+        }
+    </script>
+    <style>
+
+        #searchInput{
+            color: black;
+        }
+
+        *
+        {
+            background-color: #890800;
+            color: white;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #4f0505;
+        }
+
+        li {
+            float: left;
+            border-right:1px solid #bbb;
+
+        }
+
+        li:last-child {
+            border-left:1px solid #bbb;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            background-color: #4f0505;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #310303;
+        }
+
+        .active {
+            background-color: #f55858;
+        }
+
+        .noborder {
+            border-right: none;
+        }
+
+        body {
+            background-color: #890800;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        h3 {
+            font-family: 'Bukhari Script', cursive;
+            font-weight: bold;
+            font-style: italic;
+            color: white;
+            margin-bottom: 5px;
+        }
+        #rating-list > ul > li{
+            margin-top: 20px;
+            margin-left: -30px;
+            font-family: 'Bukhari Script', cursive;
+            font-weight: bold;
+        }
+
+        #points-container > h3{
+            margin-left: -60px;
+        }
+        h1{
+            font-family: 'Bukhari Script', cursive;
+            font-weight: bold;
+            position: absolute;
+            top: 140px;
+            left: 37%;
+            transform: translateX(-50%);
+            color: white;
+            z-index: 2;
+            font-style: italic;
+        }
+
+        input
+        {
+            color: black;
+            font-size: 15px;
+        }
+
+        .pole{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            text-align: center;
+        }
+        .form-row input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        label {
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+        input {
+            margin-bottom: 10px;
+        }
+
+        #image-container1{
+            position: fixed;
+            bottom: 20px;
+            right: 0px;
+        }
+        #image-container2{
+            position: fixed;
+            bottom: 20px;
+            left: 0px;
+        }
+        .button-container {
+            text-align: center;
+        }
+        .submit {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            background-color: #6f0415;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit:hover {
+            background-color: #6f0415;
+        }
+    </style>
+
+</head>
+<body>
+<form method="post" action="/login">
+    <ul>
+        <li><a th:href="@{/pocetna}">Home</a></li>
+        <li><a th:href="@{/map}">Map</a></li>
+        <li><a class="active" id="loginLink" th:href="@{/login}" >Log in</a></li>
+        <li><a id="signlink" th:href="@{/registration}">Sign up</a></li>
+        <li class="noborder"  style="float:right"><a><img width="30px" src="/photos/macedonia.png" alt="Macedonia Flag"></a></li>
+        <li style="float:right"><a><img width="30px" src="/photos/english.jpg" alt="English Flag"></a></li>
+        <li style="float:right"> <a th:href="@{/profil}">Profil</a></li>
+        <li style="float:right"><a href="">About</a></li>
+    </ul>
+    <div class="pole">
+    <h2>Create new Account</h2>
+    <p>Sign in to continue</p>
+        <div class="form-row">
+            <label>Email: </label><br><input type="text" name="email" id="email"><br>
+        </div>
+        <div class="form-row">
+            <label>Password: </label><br><input type="text" id="password" name="password"><br>
+        </div>
+
+    <br>
+    <div  th:if="${haserrors}">
+        <div th:text="${error}"></div>
+    </div>
+    <br>
+        <div class="button-container">
+            <button class="submit" type="submit">Login</button>
+        </div>
+    </div>
+    <div id="image-container1">
+        <img src="/photos/right.jpg" height="208" width="150"/></div>
+    <div id="image-container2">
+        <img src="/photos/left.jpg" height="208" width="150"/></div>
+</form>
+</body>

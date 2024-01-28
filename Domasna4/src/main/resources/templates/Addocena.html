@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color:  #890800;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        select, input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #3a2527;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: rgba(51, 1, 1, 0.2);
+        }
+
+        #image-container1{
+            position: fixed;
+            bottom: 20px;
+            right: 0px;
+        }
+        #image-container2{
+            position: fixed;
+            bottom: 20px;
+            left: 0px;
+        }
+    </style>
+</head>
+
+<body>
+<form method="post" action="/pocetna/ocena">
+    <input type="hidden" name='idkorisnik' th:value="${session.user.getId()}" />
+    <label>Изберете винарија</label>
+    <select name="vinarija">
+        <option th:each="v : ${vina}" th:value="${v.getId()}" th:text="${v.getName()}"></option>
+    </select>
+    <br>
+    <label>Додајте оценка</label>
+    <select name="ocena">
+        <option th:value="1">1</option>
+        <option th:value="2">2</option>
+        <option th:value="3">3</option>
+        <option th:value="4">4</option>
+        <option th:value="5">5</option>
+    </select>
+    <br>
+    <input type="submit" value="Додај" />
+</form>
+<div id="image-container1">
+    <img src="/photos/right.jpg" height="208" width="150"/></div>
+<div id="image-container2">
+    <img src="/photos/left.jpg" height="208" width="150"/></div>
+</body>
+
+</html>
